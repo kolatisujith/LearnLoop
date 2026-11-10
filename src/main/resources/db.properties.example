@@ -1,0 +1,17 @@
+# LearnLoop database configuration
+# Copy this file to src/main/resources/db.properties and replace every placeholder.
+# db.properties is ignored by Git and must never be committed.
+#
+# For deployment, prefer environment variables or an external file outside the
+# project so credentials are not packaged into target/learnloop.war:
+#   LEARNLOOP_DB_URL, LEARNLOOP_DB_USER, LEARNLOOP_DB_PASSWORD, LEARNLOOP_DB_DRIVER
+#   LEARNLOOP_DB_CONFIG=/absolute/path/to/db.properties
+#
+# Local development against MySQL 8 with a password-authenticated account and no TLS:
+#   allowPublicKeyRetrieval=true is required for caching_sha2_password.
+# Use TLS (sslMode=REQUIRED or VERIFY_IDENTITY) outside local development.
+
+db.url=jdbc:mysql://localhost:3306/learnloop_db?serverTimezone=UTC&characterEncoding=UTF-8&sslMode=PREFERRED&allowPublicKeyRetrieval=true
+db.username=learnloop_app
+db.password=CHANGE_ME
+db.driver=com.mysql.cj.jdbc.Driver

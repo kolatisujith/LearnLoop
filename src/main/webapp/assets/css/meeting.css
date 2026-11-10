@@ -1,0 +1,8 @@
+.ll-meeting-shell { max-width: 1440px; margin: 0 auto; padding-top: 2rem; padding-bottom: 2rem; }
+.ll-meeting-card { background: var(--ll-surface, #fff); border: 1px solid var(--ll-border, #dbe4ee); border-radius: 1.25rem; padding: clamp(1rem, 3vw, 2rem); box-shadow: 0 16px 45px rgba(18, 38, 63, .08); }
+.ll-meeting-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1.25rem; }
+.ll-meeting-heading h1 { margin:.25rem 0; font-size:clamp(1.6rem, 3vw, 2.4rem); }
+.ll-meeting-frame { min-height: 420px; height: min(72vh, 780px); overflow:hidden; border-radius:.9rem; background:#101827; }
+.ll-meeting-status { margin:0 0 .75rem; }
+.ll-meeting-note { font-size:.875rem; color:var(--ll-muted, #5d6b7a); margin-top:1rem; }
+@media(max-width:640px){ .ll-meeting-shell{padding:1rem .5rem}.ll-meeting-card{padding:.85rem}.ll-meeting-frame{height:70vh;min-height:360px} }

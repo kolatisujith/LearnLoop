@@ -1,0 +1,16 @@
+<c:if test="${not empty requestScope.dashboardError}">
+    <div class="alert alert-danger ll-alert" role="alert">
+        <strong>Data could not be loaded.</strong>
+        <c:out value="${requestScope.dashboardError}"/>
+    </div>
+</c:if>
+<c:if test="${not empty requestScope.error}">
+    <div class="alert alert-danger ll-alert" role="alert">
+        <c:out value="${requestScope.error}"/>
+    </div>
+</c:if>
+<c:if test="${not empty requestScope.info}">
+    <div class="alert alert-success ll-alert" role="status">
+        <c:out value="${requestScope.info}"/>
+    </div>
+</c:if>

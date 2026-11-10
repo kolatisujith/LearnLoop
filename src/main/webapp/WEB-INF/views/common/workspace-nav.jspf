@@ -1,0 +1,109 @@
+<nav class="ll-workspace-nav" aria-label="Workspace navigation">
+    <div class="ll-workspace-nav-head">
+        <span class="ll-workspace-nav-kicker">LearnLoop workspace</span>
+        <strong><c:out value="${sessionScope.authUser.role}"/></strong>
+        <span class="ll-workspace-nav-user"><c:out value="${sessionScope.authUser.fullName}"/></span>
+    </div>
+
+    <ul class="ll-workspace-links">
+        <li>
+            <a class="ll-workspace-link ${workspaceNav == 'overview' ? 'is-active' : ''}"
+               href="${ctx}${sessionScope.authUser.role == 'ADMIN' ? '/admin/dashboard' : (sessionScope.authUser.role == 'TEACHER' ? '/teacher/dashboard' : '/student/dashboard')}"
+               aria-current="${workspaceNav == 'overview' ? 'page' : 'false'}">Overview</a>
+        </li>
+
+        <c:choose>
+            <c:when test="${sessionScope.authUser.role == 'ADMIN'}">
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'teachers' ? 'is-active' : ''}"
+                       href="${ctx}/admin/teachers"
+                       aria-current="${workspaceNav == 'teachers' ? 'page' : 'false'}">Teacher approvals</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'subjects' ? 'is-active' : ''}"
+                       href="${ctx}/admin/subjects"
+                       aria-current="${workspaceNav == 'subjects' ? 'page' : 'false'}">Subjects</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'assignments' ? 'is-active' : ''}"
+                       href="${ctx}/admin/assignments"
+                       aria-current="${workspaceNav == 'assignments' ? 'page' : 'false'}">Assignments</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'users' ? 'is-active' : ''}"
+                       href="${ctx}/admin/users"
+                       aria-current="${workspaceNav == 'users' ? 'page' : 'false'}">Users</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'classes' ? 'is-active' : ''}"
+                       href="${ctx}/admin/classes"
+                       aria-current="${workspaceNav == 'classes' ? 'page' : 'false'}">Classes</a>
+                </li>
+            </c:when>
+            <c:when test="${sessionScope.authUser.role == 'TEACHER'}">
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'classes' ? 'is-active' : ''}"
+                       href="${ctx}/teacher/classes"
+                       aria-current="${workspaceNav == 'classes' ? 'page' : 'false'}">Classes</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'requests' ? 'is-active' : ''}"
+                       href="${ctx}/teacher/requests"
+                       aria-current="${workspaceNav == 'requests' ? 'page' : 'false'}">Join requests</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'materials' ? 'is-active' : ''}"
+                       href="${ctx}/teacher/materials"
+                       aria-current="${workspaceNav == 'materials' ? 'page' : 'false'}">Materials</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'assessments' ? 'is-active' : ''}"
+                       href="${ctx}/teacher/assessments"
+                       aria-current="${workspaceNav == 'assessments' ? 'page' : 'false'}">Assessments</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'progress' ? 'is-active' : ''}"
+                       href="${ctx}/teacher/progress"
+                       aria-current="${workspaceNav == 'progress' ? 'page' : 'false'}">Progress reports</a>
+                </li>
+            </c:when>
+            <c:otherwise>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'classes' ? 'is-active' : ''}"
+                       href="${ctx}/student/classes"
+                       aria-current="${workspaceNav == 'classes' ? 'page' : 'false'}">My classes</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'requests' ? 'is-active' : ''}"
+                       href="${ctx}/student/requests"
+                       aria-current="${workspaceNav == 'requests' ? 'page' : 'false'}">Join requests</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'discover' ? 'is-active' : ''}"
+                       href="${ctx}/student/discover"
+                       aria-current="${workspaceNav == 'discover' ? 'page' : 'false'}">Discover classes</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'learning' ? 'is-active' : ''}"
+                       href="${ctx}/student/learning"
+                       aria-current="${workspaceNav == 'learning' ? 'page' : 'false'}">Learning area</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'assessments' ? 'is-active' : ''}"
+                       href="${ctx}/student/assessments"
+                       aria-current="${workspaceNav == 'assessments' ? 'page' : 'false'}">Assessments</a>
+                </li>
+                <li>
+                    <a class="ll-workspace-link ${workspaceNav == 'analytics' ? 'is-active' : ''}"
+                       href="${ctx}/student/analytics"
+                       aria-current="${workspaceNav == 'analytics' ? 'page' : 'false'}">Learning analytics</a>
+                </li>
+            </c:otherwise>
+        </c:choose>
+    </ul>
+
+    <div class="ll-workspace-nav-foot">
+        <a href="${ctx}/">LearnLoop home</a>
+        <a href="${ctx}/health">Platform health</a>
+    </div>
+</nav>

@@ -1,0 +1,19 @@
+<form class="ll-admin-tools" method="get" action="${ctx}${adminSearchPath}" role="search">
+    <div class="ll-admin-search">
+        <label class="visually-hidden" for="adminSearchQuery">Search</label>
+        <input class="form-control" id="adminSearchQuery" name="q" type="search"
+               value="<c:out value='${pageResult.query}'/>"
+               placeholder="<c:out value='${adminSearchPlaceholder}'/>" autocomplete="off">
+        <button class="btn ll-btn-primary" type="submit">Search</button>
+        <c:if test="${not empty pageResult.query}">
+            <a class="btn ll-btn-outline" href="${ctx}${adminSearchPath}">Clear</a>
+        </c:if>
+    </div>
+    <p class="ll-result-count" role="status">
+        <c:choose>
+            <c:when test="${pageResult.totalItems == 0}">No matching records.</c:when>
+            <c:when test="${pageResult.totalItems == 1}">1 record found.</c:when>
+            <c:otherwise><c:out value="${pageResult.totalItems}"/> records found.</c:otherwise>
+        </c:choose>
+    </p>
+</form>

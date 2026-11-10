@@ -1,0 +1,77 @@
+<footer class="ll-footer">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <a class="ll-brand ll-brand--footer" href="${ctx}/">
+                    <span class="ll-brand-mark" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+                            <path d="M11 21.5a6.4 6.4 0 0 1 0-9.1l3-3a6.4 6.4 0 0 1 9.1 9.1l-1.7 1.7"
+                                  stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+                            <path d="M21 10.5a6.4 6.4 0 0 1 0 9.1l-3 3a6.4 6.4 0 0 1-9.1-9.1l1.7-1.7"
+                                  stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <span>LearnLoop</span>
+                </a>
+                <p class="ll-footer-text">
+                    A focused space for invitation-only classes, protected learning resources and clear progress.
+                    Built with Java, Servlets, JSP and JDBC.
+                </p>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h2 class="ll-footer-heading">Platform</h2>
+                <ul class="ll-footer-links">
+                    <li><a href="${ctx}/#features">Features</a></li>
+                    <li><a href="${ctx}/#how-it-works">How it works</a></li>
+                    <li><a href="${ctx}/#roles">Roles</a></li>
+                    <li><a href="${ctx}/health">Health check</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h2 class="ll-footer-heading">Account</h2>
+                <ul class="ll-footer-links">
+                    <c:choose>
+                        <c:when test="${not empty sessionScope.authUser}">
+                            <c:choose>
+                                <c:when test="${sessionScope.authUser.role == 'ADMIN'}">
+                                    <li><a href="${ctx}/admin/dashboard">Admin dashboard</a></li>
+                                </c:when>
+                                <c:when test="${sessionScope.authUser.role == 'TEACHER'}">
+                                    <li><a href="${ctx}/teacher/dashboard">Teacher dashboard</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li><a href="${ctx}/student/dashboard">Student dashboard</a></li>
+                                </c:otherwise>
+                            </c:choose>
+                            <li><span class="ll-footer-muted">Signed in as <c:out value="${sessionScope.authUser.email}"/></span></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="${ctx}/login">Log in</a></li>
+                            <li><a href="${ctx}/register">Register</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h2 class="ll-footer-heading">Phase 13 hardening</h2>
+                <p class="ll-footer-text">
+                    LearnLoop uses role checks, CSRF protection, strict browser security headers, safe material
+                    downloads and secure invitation tokens. HTTPS and production deployment settings remain essential.
+                </p>
+                <a class="ll-footer-status" id="footer-platform-status" href="${ctx}/health">
+                    <span class="ll-status-dot" aria-hidden="true"></span>
+                    Platform health endpoint
+                </a>
+            </div>
+        </div>
+        <div class="ll-footer-bottom">
+            <span>&copy; <span id="currentYear">2026</span> LearnLoop. All rights reserved.</span>
+            <span>Version 1.0.0 &middot; Phase 13 security hardening</span>
+        </div>
+    </div>
+</footer>
+
+<script src="${ctx}/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js" defer></script>
+<script src="${ctx}/assets/js/app.js" defer></script>
+</body>
+</html>

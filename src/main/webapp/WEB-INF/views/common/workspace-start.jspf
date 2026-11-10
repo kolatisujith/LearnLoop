@@ -1,0 +1,15 @@
+<%@ include file="/WEB-INF/views/common/header.jspf" %>
+<main id="main-content" class="ll-dashboard-main">
+    <div class="container">
+        <div class="ll-workspace-layout">
+            <aside class="ll-workspace-sidebar" data-reveal>
+                <%@ include file="/WEB-INF/views/common/workspace-nav.jspf" %>
+            </aside>
+            <div class="ll-workspace-content">
+                <header class="ll-dashboard-head" data-reveal>
+                    <span class="ll-eyebrow"><c:out value="${workspaceEyebrow}"/></span>
+                    <span class="ll-phase-badge ll-phase-live">Role protected</span>
+                    <h1><c:out value="${workspaceTitle}"/></h1>
+                    <p><c:out value="${workspaceLead}"/></p>
+                </header>
+                <%@ include file="/WEB-INF/views/common/alerts.jspf" %>

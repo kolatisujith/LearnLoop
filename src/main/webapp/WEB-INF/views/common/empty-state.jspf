@@ -1,0 +1,8 @@
+<div class="ll-empty-state">
+    <span class="ll-empty-mark" aria-hidden="true">+</span>
+    <h2><c:out value="${emptyTitle}"/></h2>
+    <p><c:out value="${emptyText}"/></p>
+    <c:if test="${not empty emptyCtaHref}">
+        <a class="btn ll-btn-outline" href="${emptyCtaHref}"><c:out value="${emptyCtaLabel}"/></a>
+    </c:if>
+</div>

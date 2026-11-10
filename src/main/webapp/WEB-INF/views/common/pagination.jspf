@@ -1,0 +1,37 @@
+<c:if test="${pageResult.getTotalPages() > 1}">
+    <nav class="ll-pagination" aria-label="Pagination">
+        <span class="ll-pagination-summary">
+            Showing <c:out value="${pageResult.getFirstItemNumber()}"/>-<c:out value="${pageResult.getLastItemNumber()}"/>
+            of <c:out value="${pageResult.totalItems}"/>
+        </span>
+        <div class="ll-pagination-links">
+            <c:choose>
+                <c:when test="${pageResult.isHasPrevious()}">
+                    <c:url var="previousPageUrl" value="${adminSearchPath}">
+                        <c:param name="q" value="${pageResult.query}"/>
+                        <c:param name="page" value="${pageResult.getPreviousPage()}"/>
+                    </c:url>
+                    <a class="btn ll-btn-outline btn-sm" href="${previousPageUrl}">Previous</a>
+                </c:when>
+                <c:otherwise>
+                    <span class="btn ll-btn-outline btn-sm disabled" aria-disabled="true">Previous</span>
+                </c:otherwise>
+            </c:choose>
+            <span class="ll-pagination-page">
+                Page <c:out value="${pageResult.page}"/> of <c:out value="${pageResult.getTotalPages()}"/>
+            </span>
+            <c:choose>
+                <c:when test="${pageResult.isHasNext()}">
+                    <c:url var="nextPageUrl" value="${adminSearchPath}">
+                        <c:param name="q" value="${pageResult.query}"/>
+                        <c:param name="page" value="${pageResult.getNextPage()}"/>
+                    </c:url>
+                    <a class="btn ll-btn-outline btn-sm" href="${nextPageUrl}">Next</a>
+                </c:when>
+                <c:otherwise>
+                    <span class="btn ll-btn-outline btn-sm disabled" aria-disabled="true">Next</span>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </nav>
+</c:if>
